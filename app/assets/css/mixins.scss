@@ -1,0 +1,22 @@
+@mixin font-face($name, $filename, $weight, $style) {
+  $path: "@/assets/fonts/pt-root-ui/#{$filename}";
+
+  @font-face {
+    font-family: $name;
+    src:  url("#{$path}.woff") format("woff"),
+          url("#{$path}.woff2") format("woff2"),
+          url("#{$path}.ttf") format("truetype"),
+          url("#{$path}.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+@mixin respond($width) {
+  @if $width == tablet {
+    @media (max-width: 960px) { @content; }
+  } @else if $width == desktop {
+    @media (min-width: 1440px) { @content; }
+  }
+}

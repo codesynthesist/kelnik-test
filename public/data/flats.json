@@ -1,0 +1,232 @@
+[
+  {
+    "id": "68c06058632ce3a89ce3e3c2",
+    "number": 186,
+    "rooms": 4,
+    "square": 119,
+    "floor": 8,
+    "totalFloors": 29,
+    "price": 10528701,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058532f81d9b00abc44",
+    "number": 50,
+    "rooms": 4,
+    "square": 121,
+    "floor": 14,
+    "totalFloors": 29,
+    "price": 7972803,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058cfefe4532348643e",
+    "number": 78,
+    "rooms": 2,
+    "square": 120,
+    "floor": 27,
+    "totalFloors": 29,
+    "price": 10046879,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058c824f965a29a6cda",
+    "number": 89,
+    "rooms": 1,
+    "square": 126,
+    "floor": 20,
+    "totalFloors": 29,
+    "price": 13421140,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c0605879e01a47cdff6b4d",
+    "number": 107,
+    "rooms": 1,
+    "square": 54,
+    "floor": 1,
+    "totalFloors": 29,
+    "price": 8614537,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058c46ddfea7131af5b",
+    "number": 64,
+    "rooms": 1,
+    "square": 43,
+    "floor": 20,
+    "totalFloors": 29,
+    "price": 13415603,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058b76b7e895cee87d5",
+    "number": 157,
+    "rooms": 3,
+    "square": 92,
+    "floor": 13,
+    "totalFloors": 29,
+    "price": 11582532,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058af1d916ab1aa5366",
+    "number": 160,
+    "rooms": 1,
+    "square": 116,
+    "floor": 15,
+    "totalFloors": 29,
+    "price": 8299552,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058d1b57be0abe123c0",
+    "number": 177,
+    "rooms": 1,
+    "square": 83,
+    "floor": 9,
+    "totalFloors": 29,
+    "price": 6806353,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058bd9087c1cf5b0f95",
+    "number": 14,
+    "rooms": 2,
+    "square": 105,
+    "floor": 24,
+    "totalFloors": 29,
+    "price": 8346343,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058a880c50491e46ccc",
+    "number": 66,
+    "rooms": 3,
+    "square": 62,
+    "floor": 21,
+    "totalFloors": 29,
+    "price": 12642614,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c0605882d98ec9b19f5ea9",
+    "number": 139,
+    "rooms": 1,
+    "square": 108,
+    "floor": 24,
+    "totalFloors": 29,
+    "price": 11738957,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058c970c208591c22ed",
+    "number": 170,
+    "rooms": 3,
+    "square": 125,
+    "floor": 1,
+    "totalFloors": 29,
+    "price": 13636611,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c060582bca9266b9fb6bb0",
+    "number": 106,
+    "rooms": 3,
+    "square": 92,
+    "floor": 24,
+    "totalFloors": 29,
+    "price": 7106363,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058760ceae893a7eba6",
+    "number": 64,
+    "rooms": 1,
+    "square": 72,
+    "floor": 1,
+    "totalFloors": 29,
+    "price": 4658965,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058b54ee733072b1a3d",
+    "number": 206,
+    "rooms": 1,
+    "square": 103,
+    "floor": 3,
+    "totalFloors": 29,
+    "price": 9124377,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c0605857e51b15f0cd7dc4",
+    "number": 18,
+    "rooms": 4,
+    "square": 97,
+    "floor": 27,
+    "totalFloors": 29,
+    "price": 4808084,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058a652c93be5bff583",
+    "number": 79,
+    "rooms": 2,
+    "square": 64,
+    "floor": 23,
+    "totalFloors": 29,
+    "price": 15875824,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c060589158f5c429144bcd",
+    "number": 165,
+    "rooms": 2,
+    "square": 123,
+    "floor": 4,
+    "totalFloors": 29,
+    "price": 15978153,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c06058162894a8e4d434dc",
+    "number": 154,
+    "rooms": 2,
+    "square": 101,
+    "floor": 7,
+    "totalFloors": 29,
+    "price": 15661968,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c060586431d8bf7ff8c6b7",
+    "number": 52,
+    "rooms": 3,
+    "square": 105,
+    "floor": 16,
+    "totalFloors": 29,
+    "price": 15991745,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c0605811f20ce011d81d16",
+    "number": 211,
+    "rooms": 4,
+    "square": 65,
+    "floor": 20,
+    "totalFloors": 29,
+    "price": 5731100,
+    "image": "placeholder.png"
+  },
+  {
+    "id": "68c060586cc2b7cba6dd51a1",
+    "number": 13,
+    "rooms": 1,
+    "square": 100,
+    "floor": 13,
+    "totalFloors": 29,
+    "price": 10869036,
+    "image": "placeholder.png"
+  }
+]
