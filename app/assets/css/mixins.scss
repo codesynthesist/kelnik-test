@@ -7,15 +7,15 @@
           url("#{$path}.woff2") format("woff2"),
           url("#{$path}.ttf") format("truetype"),
           url("#{$path}.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
+    font-weight: $weight;
+    font-style: $style;
     font-display: swap;
   }
 }
 
 @mixin respond($width) {
   @if $width == tablet {
-    @media (max-width: 960px) { @content; }
+    @media (min-width: 960px) { @content; }
   } @else if $width == desktop {
     @media (min-width: 1440px) { @content; }
   }

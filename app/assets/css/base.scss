@@ -1,3 +1,6 @@
+@use "vars" as *;
+@use "mixins" as *;
+
 * {
   margin: 0;
   padding: 0;
@@ -7,13 +10,24 @@
 html {
   font-size: 14px;
   line-height: 1.45em;
+
 }
 
 body {
   font-family: "PT Root UI", "sans-serif";
+  color: $color-text-primary;
 }
 
 h1 {
   font-size: 54px;
   line-height: 1em;
+  margin-bottom: 24px;
+}
+
+.mobile-hidden {
+  display: none;
+
+  @include respond(desktop) {
+    display: inherit;
+  }
 }
