@@ -1,7 +1,9 @@
 <template>
   <button
       type="button"
-      class="sort-button" :class="className"
+      class="sort-button"
+      :disabled="props.disabled"
+      :class="className"
       @click="onClick"
   >
     <slot></slot>
@@ -15,13 +17,16 @@ interface Props {
   field: string
   sortKey: string | null,
   sortDirection: Directions,
+  disabled?: boolean,
 }
 
 interface Emits {
   click: [field: string, direction: Directions];
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  disabled: false,
+});
 const emit = defineEmits<Emits>();
 
 const isActive: ComputedRef<boolean> = computed(() => props.field === props.sortKey);
@@ -98,6 +103,16 @@ $defaultBg: rgba($color-text-primary, 40%);
   &:hover {
     color: $color-green;
     @include direction--asc();
+  }
+
+  &:disabled {
+    color: $color-text-secondary;
+    cursor: not-allowed;
+
+    &::before,
+    &::after {
+      cursor: not-allowed;
+    }
   }
 
   &--active {

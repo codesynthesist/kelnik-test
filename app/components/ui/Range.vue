@@ -12,13 +12,15 @@
       </div>
     </div>
 
-    <Range
-        v-model="modelValue"
-        :min="min"
-        :max="max"
-        :step="props.step"
-        range-highlight
-    />
+    <div class="slider__range" :class="{ 'slider__range--disabled': props.disabled }">
+      <Range
+          v-model="modelValue"
+          :min="min"
+          :max="max"
+          :step="props.step"
+          range-highlight
+      />
+    </div>
   </div>
 </template>
 
@@ -31,21 +33,33 @@ interface Props {
   max: number;
   step?: number;
   label?: string;
+  disabled?: boolean
+}
+
+interface Emits {
+  change: [value: [number, number]];
 }
 
 const modelValue = defineModel<[number, number]>({
   default: () => [0, 0],
 });
 
-const props = withDefaults(defineProps<Props>(), { step: 1 });
+const props = withDefaults(defineProps<Props>(), {
+  step: 1,
+  disabled: false,
+});
+const emit = defineEmits<Emits>();
 
 const min = computed(() => {
-  console.log('dsd');
   return Math.floor(props.min / props.step) * props.step;
 });
 
 const max = computed(() => {
   return Math.ceil(props.max / props.step) * props.step;
+});
+
+watch(modelValue, (val) => {
+  emit('change', val);
 });
 </script>
 
@@ -53,7 +67,14 @@ const max = computed(() => {
 @use '@/assets/css/vars.scss' as *;
 
 .slider {
-  width: 280px;
+  width: 100%;
+
+  &__range {
+    &--disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
 
   &__label {
     font-size: 13px;
@@ -100,6 +121,22 @@ const max = computed(() => {
     width: 14px;
     height: 14px;
     top: -6px;
+  }
+}
+
+.slider__range--disabled {
+  .m-range {
+    &-thumb,
+    &-thumb-circle,
+    &-highlight {
+      background-color: $color-green-light;
+      cursor: not-allowed;
+    }
+
+    &-thumb-circle {
+      border-color: $color-green-light;
+      cursor: not-allowed;
+    }
   }
 }
 

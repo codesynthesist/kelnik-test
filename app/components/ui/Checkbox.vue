@@ -59,15 +59,17 @@ const isChecked = computed({
     position: absolute;
     opacity: 0;
 
-    &:disabled + label {
-      cursor: not-allowed;
-      color: $color-text-secondary;
-    }
-
     &:checked + label {
       background-color: $color-green;
       color: $color-white;
       box-shadow: 0 0 6px 0 #95D0A1;
+    }
+
+    &:disabled + label {
+      cursor: not-allowed;
+      color: $color-text-secondary;
+      background-color: $color-green-light;
+      cursor: not-allowed;
     }
 
     & + label {
