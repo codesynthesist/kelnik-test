@@ -23,7 +23,12 @@ const { getFlats, resetFilter } = flatsStore;
 
 await useAsyncData('flats', async () => {
   await getFlats();
-  resetFilter();
+
+  // если есть данные в ls - значит есть предсохраненные фильтрации и сортировки
+  // они подтянутся сами плагином persistedstate
+  if (!localStorage.getItem('flats')) {
+    resetFilter();
+  }
 });
 
 definePageMeta({

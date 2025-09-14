@@ -68,7 +68,7 @@ export const useFlatsStore = defineStore('flats', () => {
                 isLoading.value = false;
             }, 1500);
         } catch (error) {
-            console.log(error);
+            console.error(error);
             flats.value = [];
 
             isLoading.value = false;
@@ -105,10 +105,10 @@ export const useFlatsStore = defineStore('flats', () => {
         getFlats,
         resetFilter,
     };
-}/*, {
+}, {
     persist: {
         storage: piniaPluginPersistedstate.localStorage(),
         pick: ['filter', 'sort'],
     },
-}*/);
+});
 
