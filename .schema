@@ -1,0 +1,13 @@
+[
+  '{{repeat(49)}}',
+  {
+    id: '{{objectId()}}',
+    number: '{{integer(1, 222)}}',
+    rooms: '{{random(1, 2, 3, 4)}}',
+    square: '{{floating(29, 130, 2, "0,0")}}',
+    floor: '{{integer(1, 29)}}',
+    totalFloors: 29,
+    price: '{{integer(4500000, 16000000)}}',
+    image: 'placeholder.png'
+  }
+]
