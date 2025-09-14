@@ -5,7 +5,8 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.scss'],
   modules: [
     '@pinia/nuxt',
-    'pinia-plugin-persistedstate/nuxt',
+    'nuxt-svgo',
+    'pinia-plugin-persistedstate/nuxt'
   ],
   pinia: {
     storesDirs: ['./stores/**'],

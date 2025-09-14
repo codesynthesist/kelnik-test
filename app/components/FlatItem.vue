@@ -46,11 +46,10 @@ const {
   display: grid;
   width: 100%;
   gap: 20px;
-  padding: 12px;
+  padding: 16px 24px;
   border: 1px solid #eee;
   border-radius: 6px;
   margin-bottom: 4px;
-
   grid-template-areas: "info image";
   grid-template-columns: 1fr 80px;
 

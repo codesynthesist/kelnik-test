@@ -7,10 +7,16 @@
   box-sizing: border-box;
 }
 
+:root {
+  --c-primary: #{$color-green};
+  --c-fill: #cbdcd3;
+  --c-fill-thumb: var(--c-primary);
+
+}
+
 html {
   font-size: 14px;
   line-height: 1.45em;
-
 }
 
 body {
@@ -31,3 +37,6 @@ h1 {
     display: inherit;
   }
 }
+
+
+

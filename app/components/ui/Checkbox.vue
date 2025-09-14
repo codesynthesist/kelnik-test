@@ -66,7 +66,6 @@ const isChecked = computed({
     }
 
     &:disabled + label {
-      cursor: not-allowed;
       color: $color-text-secondary;
       background-color: $color-green-light;
       cursor: not-allowed;

@@ -1,4 +1,4 @@
-import type { Directions, Flat, Filter, Sort, SortableStrings } from '@/types';
+import type {  Flat, Filter, Sort } from '@/types';
 import { getFlatsFromDb, filterFn, sortFn } from './utils/flats';
 
 type FlatsMeta = Filter & {
@@ -7,7 +7,7 @@ type FlatsMeta = Filter & {
 }
 
 const filterDefault: Filter = {
-    rooms: [1],
+    rooms: [],
     price: [3_500_000, 7_500_000],
     square: [33, 89],
 };
@@ -16,8 +16,8 @@ export const useFlatsStore = defineStore('flats', () => {
     const isLoading = ref<boolean>(false);
     const flats = ref<Flat[]>([]);
     const flatsMeta = reactive<FlatsMeta>({
-        price: [0, 1],
-        square: [0, 1],
+        price: [0, 0],
+        square: [0, 0],
         rooms: [],
         totalItems: 0,
         perPage: 10,
@@ -27,7 +27,14 @@ export const useFlatsStore = defineStore('flats', () => {
         field: 'price',
         direction: 'asc',
     });
-    const pagination = ref<number>(1);
+    const page = ref<number>(1);
+
+    const visibleFlats: ComputedRef<Flat[]>= computed(() => {
+        return flats.value.slice(0, page.value * flatsMeta.perPage);
+    });
+    const isNextPageAvailable = computed(() => {
+        return (page.value * flatsMeta.perPage) <= flats.value.length;
+    })
 
     const getFlats = async () => {
         isLoading.value = true;
@@ -52,38 +59,49 @@ export const useFlatsStore = defineStore('flats', () => {
             flatsMeta.rooms = rooms;
 
             // фильтрация
-            flatList.filter(filterFn(filter));
+            flatList = flatList.filter(filterFn(filter));
 
-            // сортировка
-            flatList.sort(sortFn(sort.field, sort.direction));
 
             // имитация загрузки и применение пагинации
             setTimeout(() => {
-                flats.value = flatList.slice(0, pagination.value * flatsMeta.perPage);
+                flats.value = flatList;
+                isLoading.value = false;
             }, 1500);
         } catch (error) {
             console.log(error);
             flats.value = [];
-        } finally {
+
             isLoading.value = false;
         }
     };
 
+    const sortFlats = async () => {
+        flats.value = flats.value.sort(sortFn(sort.field, sort.direction));
+    }
+
     const resetFilter = () => {
+        // filterInitialized.value = true;
         filter.price = flatsMeta.price;
         filter.square = flatsMeta.square;
         filter.rooms = flatsMeta.rooms;
-    }
+    };
 
-    watch([filter, sort], () => {
-        getFlats();
-    })
+    watch(filter, async () => {
+        await getFlats();
+    },
+    { deep: true },
+    );
 
     return {
+        isLoading,
         flats,
+        visibleFlats,
         flatsMeta,
         filter,
         sort,
+        page,
+        isNextPageAvailable,
+        sortFlats,
         getFlats,
         resetFilter,
     };
