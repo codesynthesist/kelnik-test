@@ -7,11 +7,15 @@
     <div class="flats__filter">
       <FlatsFilter/>
     </div>
+    <teleport to="body">
+      <GoTopButton/>
+    </teleport>
   </section>
 </template>
 
 <script setup lang="ts">
 import { useFlatsStore } from '@/stores/flats';
+import GoTopButton from '~/components/ui/GoTopButton.vue';
 
 const flatsStore = useFlatsStore();
 
@@ -22,10 +26,10 @@ await useAsyncData('flats', async () => {
   resetFilter();
 });
 
-
 definePageMeta({
   title: 'Квартиры',
 });
+
 </script>
 
 <style scoped lang="scss">
@@ -40,6 +44,7 @@ definePageMeta({
   @include respond(desktop) {
     max-width: 1280px;
     margin: 0 auto;
+    padding: 96px 80px;
   }
 
   &__list {
