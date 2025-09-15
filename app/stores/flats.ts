@@ -36,7 +36,7 @@ export const useFlatsStore = defineStore('flats', () => {
         return (page.value * flatsMeta.perPage) <= flats.value.length;
     });
 
-    const getFlats = async (init: boolean = false) => {
+    const getFlats = async () => {
         isLoading.value = true;
 
         try {
