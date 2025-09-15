@@ -18,6 +18,7 @@
           :min="min"
           :max="max"
           :step="props.step"
+          :arial-label="props.label"
           range-highlight
       />
     </div>

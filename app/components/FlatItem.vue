@@ -1,21 +1,30 @@
 <template>
-  <div class="flat">
+  <article class="flat" tabindex="0" :aria-label="description">
       <div class="flat__image">
         <img
             :src="`/img/${image}`"
-            alt="Схема планировки квартиры"
+            :alt="`${rooms}-комнатная квартира №${num}`"
             class="flat-item__schema"
         />
       </div>
       <div class="flat__info">
-        <div class="flat__title"><span>{{ rooms }}-комнатная №{{ num }}</span></div>
-        <div class="flat__parameters">
-          <div class="flat__square">{{ square }}<span class="hint"> м<sup>2</sup></span></div>
-          <div class="flat__floor">{{ floor }} <span>из {{ totalFloors }} <span class="hint">этаж</span></span></div>
-          <div class="flat__price">{{ price.toLocaleString() }} <span>₽</span></div>
-        </div>
+        <h3 class="flat__title">{{ rooms }}-комнатная №{{ num }}</h3>
+        <dl class="flat__parameters">
+          <div class="flat__square">
+            <dt class="sr-only">Площадь</dt>
+            <dd>{{ square }}<span class="mobile-only"> м<sup>2</sup></span></dd>
+          </div>
+          <div class="flat__floor">
+            <dt class="sr-only">Этаж</dt>
+            <dd>{{ floor }} <span>из {{ totalFloors }} <span class="mobile-only">этаж</span></span></dd>
+          </div>
+          <div class="flat__price">
+            <dt class="sr-only">Цена</dt>
+            <dd>{{ price.toLocaleString() }} <span>₽</span></dd>
+          </div>
+        </dl>
       </div>
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
@@ -36,6 +45,10 @@ const {
   price,
   image,
 } = props.flat;
+
+const description = computed(() =>
+    `${rooms}-комнатная квартира №${num}, ${square} квадратных метров, ${floor} этаж из ${totalFloors}, цена ${price} рублей`
+);
 </script>
 
 <style scoped lang="scss">
@@ -109,11 +122,14 @@ const {
     }
   }
 
-
   &__square {
     grid-area: square;
     font-weight: 500;
     line-height: 8px;
+
+    @include respond(desktop) {
+      line-height: inherit;
+    }
   }
 
   &__floor  {
@@ -131,12 +147,6 @@ const {
   &__price  {
     grid-area: price;
     font-weight: 500;
-  }
-
-  .flat_floor-hint {
-    @include respond(desktop) {
-      display: none;
-    }
   }
 }
 

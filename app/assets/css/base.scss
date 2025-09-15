@@ -30,12 +30,31 @@ h1 {
   margin-bottom: 24px;
 }
 
-.mobile-hidden {
+// some utilities
+.mobile-only {
+  @include respond(desktop) {
+    display: none;
+  }
+}
+
+.desktop-only {
   display: none;
 
   @include respond(desktop) {
     display: inherit;
   }
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 

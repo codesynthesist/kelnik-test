@@ -59,6 +59,10 @@ const isChecked = computed({
     position: absolute;
     opacity: 0;
 
+    &:focus + label {
+      outline: 2px solid $color-black;
+    }
+
     &:checked + label {
       background-color: $color-green;
       color: $color-white;

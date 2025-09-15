@@ -1,7 +1,8 @@
 <template>
   <client-only>
     <section class="filter">
-      <div class="filter__field filter__rooms">
+      <fieldset class="filter__field filter__rooms">
+        <legend class="sr-only">Количество комнат</legend>
         <UiCheckbox
             v-for="i of flatsMeta.rooms"
             v-model="rooms"
@@ -10,9 +11,9 @@
         >
           {{ i }}к
         </UiCheckbox>
-      </div>
+      </fieldset>
 
-      <div class="filter__field">
+      <div class="filter__field" >
         <UiRange
             :model-value="filter.price"
             :min="flatsMeta.price[0]"
@@ -42,6 +43,7 @@
             v-if="isFiltered"
             type="text"
             class="filter__reset-button"
+            aria-label="Сбросить фильтры"
             :disabled="isLoading"
             @click="resetFilter"
         >
@@ -109,6 +111,7 @@ const rooms = computed({
 
   &__rooms {
     display: flex;
+    border: none;
 
     & > *:not(:last-child) {
       margin-right: 16px;

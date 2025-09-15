@@ -1,12 +1,12 @@
 <template>
   <section class="flats">
-    <div class="flats__list">
+    <main class="flats__list">
       <h1>Квартиры</h1>
       <FlatList/>
-    </div>
-    <div class="flats__filter">
+    </main>
+    <aside class="flats__filter">
       <FlatsFilter/>
-    </div>
+    </aside>
     <teleport to="body">
       <GoTopButton/>
     </teleport>

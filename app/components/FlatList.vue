@@ -1,9 +1,12 @@
 <template>
-  <div class="flat-list">
+  <section class="flat-list">
     <client-only>
-      <div class="flat-header">
-        <div class="mobile-hidden">Планировка</div>
-        <div class="mobile-hidden">Квартира</div>
+      <header
+          v-if="visibleFlats.length"
+          class="flat-header"
+      >
+        <div class="desktop-only">Планировка</div>
+        <div class="desktop-only">Квартира</div>
         <div>
           <UiSortButon
               field="square"
@@ -37,31 +40,35 @@
             Цена, <span class="hint">₽</span>
           </UiSortButon>
         </div>
-      </div>
+      </header>
     </client-only>
 
-    <div class="flat-list__items">
-      <template v-if="isLoading">
+    <ul class="flat-list__list">
+      <li v-if="isLoading">
         Загрузка...
-      </template>
+      </li>
+      <li v-else-if="!visibleFlats.length">
+        Нет данных по текущему запросу...
+      </li>
 
-      <FlatItem
+      <li
           v-else
           v-for="flat of visibleFlats"
           :key="flat.id"
-          :flat="flat"
-          class="flat-list__item"
-      />
-    </div>
+      >
+        <FlatItem :flat="flat"/>
+      </li>
+    </ul>
 
     <UiButton
         v-show="!isLoading && visibleFlats.length && isNextPageAvailable"
         :disabled="isListLoading"
+        aria-label="Показать больше квартир"
         @click="loadMore"
     >
       Показать еще
     </UiButton>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -99,11 +106,16 @@ const loadMore = () => {
 .flat-list {
   margin-right: 80px;
 
-  &__items {
+  &__list {
     margin-bottom: 24px;
+    list-style: none;
 
     @include respond(desktop) {
       margin-bottom: 48px;
+    }
+
+    & > {
+      list-style: none;
     }
   }
 
