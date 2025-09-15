@@ -1,15 +1,15 @@
 import type { Flat, Filter, Sort } from '@/types';
 import { getFlatsFromDb, filterFn, sortFn } from './utils/flats';
 
+
 type FlatsMeta = Filter & {
     totalItems: number,
     perPage: number,
 }
-
-const filterDefault: Filter = {
-    rooms: [],
-    price: [3_500_000, 7_500_000],
-    square: [33, 89],
+export const filterDefault: Filter = {
+    rooms: [1, 2],
+    price: [3_500_000, 10_000_000],
+    square: [29, 60],
 };
 
 export const useFlatsStore = defineStore('flats', () => {
@@ -29,15 +29,14 @@ export const useFlatsStore = defineStore('flats', () => {
     });
     const page = ref<number>(1);
 
-    const visibleFlats: ComputedRef<Flat[]>= computed(() => {
+    const visibleFlats: ComputedRef<Flat[]> = computed(() => {
         return flats.value.slice(0, page.value * flatsMeta.perPage);
     });
     const isNextPageAvailable = computed(() => {
         return (page.value * flatsMeta.perPage) <= flats.value.length;
-    })
+    });
 
     const getFlats = async (init: boolean = false) => {
-        console.log('pis');
         isLoading.value = true;
 
         try {
@@ -59,10 +58,6 @@ export const useFlatsStore = defineStore('flats', () => {
             flatsMeta.square = [minSquare, maxSquare];
             flatsMeta.rooms = rooms;
 
-            if (init) {
-                resetFilter();
-            }
-
             // фильтрация
             flatList = flatList.filter(filterFn(filter));
 
@@ -81,7 +76,7 @@ export const useFlatsStore = defineStore('flats', () => {
 
     const sortFlats = async () => {
         flats.value = flats.value.sort(sortFn(sort.field, sort.direction));
-    }
+    };
 
     const resetFilter = () => {
         filter.price = flatsMeta.price;
@@ -90,9 +85,9 @@ export const useFlatsStore = defineStore('flats', () => {
     };
 
     watch(filter, async () => {
-        await getFlats();
-    },
-    { deep: true, immediate: false },
+            await getFlats();
+        },
+        { deep: true, immediate: false },
     );
 
     return {
@@ -108,10 +103,35 @@ export const useFlatsStore = defineStore('flats', () => {
         getFlats,
         resetFilter,
     };
-}/*, {
+}, {
     persist: {
         storage: piniaPluginPersistedstate.localStorage(),
         pick: ['filter', 'sort'],
+        // serializer: {
+        //     serialize(value) {
+        //         console.log(JSON.stringify(toRaw(value.filter)), JSON.stringify(filterDefault));
+        //         const isDefault = deepEqual(filterDefault, toRaw(value.filter));
+        //         const currentFilterLs = JSON.parse(localStorage.getItem('flats'));
+        //
+        //         console.log(isDefault, currentFilterLs);
+        //
+        //         if (isDefault) {
+        //             console.log('heer');
+        //             return localStorage.getItem('flats') ?? 'null';
+        //         }
+        //
+        //         console.log('haha loh');
+        //
+        //         return JSON.stringify(value);
+        //     }
+        // },
+        // deserialize: (value) => {
+        //     try {
+        //         return JSON.parse(value);
+        //     } catch {
+        //         return null;
+        //     }
+        // }
     },
-}*/);
+});
 

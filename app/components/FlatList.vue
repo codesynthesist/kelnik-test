@@ -1,5 +1,4 @@
 <template>
-
   <div class="flat-list">
     <client-only>
       <div class="flat-header">
@@ -60,8 +59,8 @@
         :disabled="isListLoading"
         @click="loadMore"
     >
-      Показать еще {{ flatsMeta.perPage }}
-    </UiButton >
+      Показать еще
+    </UiButton>
   </div>
 </template>
 
@@ -88,8 +87,8 @@ const loadMore = () => {
   setTimeout(() => {
     page.value++;
     isListLoading.value = false;
-  }, 1500)
-}
+  }, 1500);
+};
 
 </script>
 
@@ -116,12 +115,12 @@ const loadMore = () => {
     background-color: $color-white;
 
     @include respond(desktop) {
-        display: grid;
-        grid-template-areas: "image title square floor price";
-        grid-template-columns: 80px 280px 80px 100px 120px;
-        align-items: center;
-        padding: 8px 0;
-        border-bottom: 1px solid #e6e6e6;
+      display: grid;
+      grid-template-areas: "image title square floor price";
+      grid-template-columns: 80px 280px 80px 100px 120px;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #e6e6e6;
     }
   }
 }

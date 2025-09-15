@@ -67,8 +67,12 @@ const isChecked = computed({
 
     &:disabled + label {
       color: $color-text-secondary;
-      background-color: $color-green-light;
       cursor: not-allowed;
+      background-color: #eee;
+    }
+
+    &:checked:disabled + label {
+      background-color: $color-green-light;
     }
 
     & + label {
@@ -84,7 +88,5 @@ const isChecked = computed({
       user-select: none;
     }
   }
-
-
 }
 </style>

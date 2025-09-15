@@ -17,12 +17,10 @@
 import { useFlatsStore } from '@/stores/flats';
 import GoTopButton from '~/components/ui/GoTopButton.vue';
 
-const flatsStore = useFlatsStore();
-
-const { getFlats } = flatsStore;
+const { getFlats } = useFlatsStore();
 
 await useAsyncData('flats', async () => {
-  await getFlats(true);
+  await getFlats();
 });
 
 definePageMeta({

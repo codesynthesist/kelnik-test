@@ -56,8 +56,9 @@
 <script setup lang="ts">
 import debounce from 'lodash/debounce';
 import deepEqual from 'fast-deep-equal';
-import { useFlatsStore } from '@/stores/flats';
 import XMark from '@/assets/img/icons/xmark.svg';
+
+import { useFlatsStore } from '@/stores/flats';
 
 const flatStore = useFlatsStore();
 
@@ -115,11 +116,11 @@ const rooms = computed({
   }
 
   &__reset-button {
-     svg {
-       width: 8px;
-       height: 8px;
-       margin-left: 8px;
-       margin-top: 3px;
+    svg {
+      width: 8px;
+      height: 8px;
+      margin-left: 8px;
+      margin-top: 3px;
     }
   }
 }
