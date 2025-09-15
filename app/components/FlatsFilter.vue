@@ -1,54 +1,56 @@
 <template>
-  <section class="filter">
-    <div class="filter__field filter__rooms">
-      <UiCheckbox
-          v-for="i of flatsMeta.rooms"
-          v-model="rooms"
-          :value="i"
-          :disabled="isLoading"
-      >
-        {{ i }}к
-      </UiCheckbox>
-    </div>
+  <client-only>
+    <section class="filter">
+      <div class="filter__field filter__rooms">
+        <UiCheckbox
+            v-for="i of flatsMeta.rooms"
+            v-model="rooms"
+            :value="i"
+            :disabled="isLoading"
+        >
+          {{ i }}к
+        </UiCheckbox>
+      </div>
 
-    <div class="filter__field">
-      <UiRange
-          :model-value="filter.price"
-          :min="flatsMeta.price[0]"
-          :max="flatsMeta.price[1]"
-          :step="100_00"
-          :disabled="isLoading"
-          label="Стоимость квартиры, ₽"
-          @change="(val) => onRangeChange(val, 'price')"
-      />
-    </div>
+      <div class="filter__field">
+        <UiRange
+            :model-value="filter.price"
+            :min="flatsMeta.price[0]"
+            :max="flatsMeta.price[1]"
+            :step="100_00"
+            :disabled="isLoading"
+            label="Стоимость квартиры, ₽"
+            @change="(val) => onRangeChange(val, 'price')"
+        />
+      </div>
 
-    <div class="filter__field">
-      <UiRange
-          :model-value="filter.square"
-          :min="flatsMeta.square[0]"
-          :max="flatsMeta.square[1]"
-          :step="1"
-          :disabled="isLoading"
-          @change="(val) => onRangeChange(val, 'square')"
-      >
-        <template #label>Площадь, м<sup>2</sup></template>
-      </UiRange>
-    </div>
+      <div class="filter__field">
+        <UiRange
+            :model-value="filter.square"
+            :min="flatsMeta.square[0]"
+            :max="flatsMeta.square[1]"
+            :step="1"
+            :disabled="isLoading"
+            @change="(val) => onRangeChange(val, 'square')"
+        >
+          <template #label>Площадь, м<sup>2</sup></template>
+        </UiRange>
+      </div>
 
-    <div class="filter__field">
-      <UiButton
-          v-if="isFiltered"
-          type="text"
-          class="filter__reset-button"
-          :disabled="isLoading"
-          @click="resetFilter"
-      >
-        Сбросить параметры
-        <XMark/>
-      </UiButton>
-    </div>
-  </section>
+      <div class="filter__field">
+        <UiButton
+            v-if="isFiltered"
+            type="text"
+            class="filter__reset-button"
+            :disabled="isLoading"
+            @click="resetFilter"
+        >
+          Сбросить параметры
+          <XMark/>
+        </UiButton>
+      </div>
+    </section>
+  </client-only>
 </template>
 
 <script setup lang="ts">

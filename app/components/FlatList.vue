@@ -1,42 +1,45 @@
 <template>
+
   <div class="flat-list">
-    <div class="flat-header">
-      <div class="mobile-hidden">Планировка</div>
-      <div class="mobile-hidden">Квартира</div>
-      <div>
-        <UiSortButon
-            field="square"
-            :sort-key="sort.field"
-            :sort-direction="sort.direction"
-            :disabled="isLoading"
-            @click="onSort"
-        >
-          S, <span class="hint">м²</span>
-        </UiSortButon>
+    <client-only>
+      <div class="flat-header">
+        <div class="mobile-hidden">Планировка</div>
+        <div class="mobile-hidden">Квартира</div>
+        <div>
+          <UiSortButon
+              field="square"
+              :sort-key="sort.field"
+              :sort-direction="sort.direction"
+              :disabled="isLoading"
+              @click="onSort"
+          >
+            S, <span class="hint">м²</span>
+          </UiSortButon>
+        </div>
+        <div>
+          <UiSortButon
+              field="floor"
+              :sort-key="sort.field"
+              :sort-direction="sort.direction"
+              :disabled="isLoading"
+              @click="onSort"
+          >
+            Этаж
+          </UiSortButon>
+        </div>
+        <div>
+          <UiSortButon
+              field="price"
+              :sort-key="sort.field"
+              :sort-direction="sort.direction"
+              :disabled="isLoading"
+              @click="onSort"
+          >
+            Цена, <span class="hint">₽</span>
+          </UiSortButon>
+        </div>
       </div>
-      <div>
-        <UiSortButon
-            field="floor"
-            :sort-key="sort.field"
-            :sort-direction="sort.direction"
-            :disabled="isLoading"
-            @click="onSort"
-        >
-          Этаж
-        </UiSortButon>
-      </div>
-      <div>
-        <UiSortButon
-            field="price"
-            :sort-key="sort.field"
-            :sort-direction="sort.direction"
-            :disabled="isLoading"
-            @click="onSort"
-        >
-          Цена, <span class="hint">₽</span>
-        </UiSortButon>
-      </div>
-    </div>
+    </client-only>
 
     <div class="flat-list__items">
       <template v-if="isLoading">

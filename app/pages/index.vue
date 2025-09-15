@@ -19,16 +19,10 @@ import GoTopButton from '~/components/ui/GoTopButton.vue';
 
 const flatsStore = useFlatsStore();
 
-const { getFlats, resetFilter } = flatsStore;
+const { getFlats } = flatsStore;
 
 await useAsyncData('flats', async () => {
-  await getFlats();
-
-  // если есть данные в ls - значит есть предсохраненные фильтрации и сортировки
-  // они подтянутся сами плагином persistedstate
-  if (!localStorage.getItem('flats')) {
-    resetFilter();
-  }
+  await getFlats(true);
 });
 
 definePageMeta({

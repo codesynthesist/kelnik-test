@@ -1,4 +1,4 @@
-import type {  Flat, Filter, Sort } from '@/types';
+import type { Flat, Filter, Sort } from '@/types';
 import { getFlatsFromDb, filterFn, sortFn } from './utils/flats';
 
 type FlatsMeta = Filter & {
@@ -36,7 +36,8 @@ export const useFlatsStore = defineStore('flats', () => {
         return (page.value * flatsMeta.perPage) <= flats.value.length;
     })
 
-    const getFlats = async () => {
+    const getFlats = async (init: boolean = false) => {
+        console.log('pis');
         isLoading.value = true;
 
         try {
@@ -58,9 +59,12 @@ export const useFlatsStore = defineStore('flats', () => {
             flatsMeta.square = [minSquare, maxSquare];
             flatsMeta.rooms = rooms;
 
+            if (init) {
+                resetFilter();
+            }
+
             // фильтрация
             flatList = flatList.filter(filterFn(filter));
-
 
             // имитация загрузки и применение пагинации
             setTimeout(() => {
@@ -80,7 +84,6 @@ export const useFlatsStore = defineStore('flats', () => {
     }
 
     const resetFilter = () => {
-        // filterInitialized.value = true;
         filter.price = flatsMeta.price;
         filter.square = flatsMeta.square;
         filter.rooms = flatsMeta.rooms;
@@ -89,7 +92,7 @@ export const useFlatsStore = defineStore('flats', () => {
     watch(filter, async () => {
         await getFlats();
     },
-    { deep: true },
+    { deep: true, immediate: false },
     );
 
     return {
@@ -105,10 +108,10 @@ export const useFlatsStore = defineStore('flats', () => {
         getFlats,
         resetFilter,
     };
-}, {
+}/*, {
     persist: {
         storage: piniaPluginPersistedstate.localStorage(),
         pick: ['filter', 'sort'],
     },
-});
+}*/);
 
