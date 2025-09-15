@@ -113,10 +113,6 @@ const loadMore = () => {
     @include respond(desktop) {
       margin-bottom: 48px;
     }
-
-    & > {
-      list-style: none;
-    }
   }
 
   .flat-header {
